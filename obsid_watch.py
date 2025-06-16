@@ -49,7 +49,7 @@ def find_changed_files(root_folder):
 
 
 def zip_changed_files(changed_files, output_zip_path):
-    with zipfile.ZipFile(output_zip_path, 'w') as zipf:
+    with zipfile.ZipFile(output_zip_path, 'w', compression=zipfile.ZIP_LZMA, compresslevel=9, allowZip64=True) as zipf:
         for file in changed_files:
             zipf.write(file, os.path.relpath(file, os.path.dirname(changed_files[0])))
 
