@@ -17,9 +17,9 @@ COMPUTER_PATHS = {
         'input_folder': 'c:\\install\\Obsidian\\obsid',
         'output_folder': 'c:\\install\\Obsidian\\obsid'
     },
-    'COMPUTER2': {
-        'input_folder': 'C:\\Path\\To\\Input\\Folder2',
-        'output_folder': 'C:\\Path\\To\\Output\\Folder2'
+    'KOMPUTER': {
+        'input_folder': 'c:\\Program Files\\Obsidian\\obsid',
+        'output_folder': 'c:\\Program Files\\Obsidian\\obsid'
     }
 }
 
