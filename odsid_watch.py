@@ -81,7 +81,6 @@ if __name__ == "__main__":
     # Получаем имя компьютера
     computer_name = os.getenv('COMPUTERNAME')
     paths = COMPUTER_PATHS.get(computer_name)
-    
     if paths:
         root_folder = args.path if args.path else paths['input_folder']
         output_zip_path = paths['output_folder']
