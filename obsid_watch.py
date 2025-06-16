@@ -9,6 +9,7 @@ import zipfile
 import argparse
 import time
 
+start_script = time.perf_counter()
 os.system("taskkill /im Obsidian.exe /f")
 # Определение путей для разных компьютеров
 COMPUTER_PATHS = {
