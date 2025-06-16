@@ -43,6 +43,7 @@ def find_changed_files(root_folder):
             # Например, проверка по времени последнего изменения
             if os.path.getmtime(file_path) > time.time() - 86400:  # файлы измененные за последний день
                 changes.append(file_path)
+                print(f'Измененный файл: {os.path.relpath(file_path, root_folder)}')
 
     return changes
 
@@ -58,7 +59,7 @@ def unzip_files(zip_file_name, output_folder):
         zipf.extractall(output_folder)
 
 
-def main(action, root_folder, output_zip_path):
+def main(action, root_folder, output_zip_path, output_folder):
     ensure_directory_exists(output_zip_path)
 
     if action == 'p':
@@ -73,8 +74,8 @@ def main(action, root_folder, output_zip_path):
     if action == 'u':
         zip_file_name = os.path.join(output_zip_path, 'changed_files.zip')
         if os.path.exists(zip_file_name):
-            unzip_files(zip_file_name, output_zip_path)
-            print(f'Распаковано в {output_zip_path}')
+            unzip_files(zip_file_name, output_folder)
+            print(f'Распаковано в {output_folder}')
         else:
             print(f'ZIP-файл не найден: {zip_file_name}')
 
@@ -97,4 +98,4 @@ if __name__ == "__main__":
         print(f'Нет настроенных путей для компьютера: {computer_name}')
         exit(1)
 
-    main(args.action, root_folder, output_zip_path)
+    main(args.action, root_folder, output_zip_path, output_folder)
