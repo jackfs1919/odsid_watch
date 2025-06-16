@@ -100,3 +100,4 @@ if __name__ == "__main__":
         exit(1)
 
     main(args.action, root_folder, output_zip_path, output_folder)
+    print(time.perf_counter() - start_script)
