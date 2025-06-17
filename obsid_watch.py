@@ -51,14 +51,17 @@ def zip_changed_files(changed_files, output_zip_path):
     with zipfile.ZipFile(output_zip_path, 'w', compression=zipfile.ZIP_LZMA, compresslevel=9, allowZip64=True) as zipf:
         for file in changed_files:
             zipf.write(file, os.path.relpath(file, os.path.dirname(changed_files[0])))
+    print("Файлы упакованы")
 
 
 def unzip_files(zip_file_name, output_folder):
     with zipfile.ZipFile(zip_file_name, 'r') as zipf:
         zipf.extractall(output_folder)
+    print("Файлы распакованы")
 
 
-def main(action, root_folder, output_zip_path, output_folder):
+def main(action, root_folder, output_zip_path):
+    output_folder = root_folder
     ensure_directory_exists(output_zip_path)
 
     if action == 'p':
@@ -69,7 +72,6 @@ def main(action, root_folder, output_zip_path, output_folder):
             print(f'Упаковано {len(changed_files)} изменившихся файлов в {zip_file_name}')
         else:
             print('Нет изменившихся файлов для упаковки.')
-    
     if action == 'u':
         zip_file_name = os.path.join(output_zip_path, 'changed_files.zip')
         if os.path.exists(zip_file_name):
@@ -92,10 +94,9 @@ if __name__ == "__main__":
     paths = COMPUTER_PATHS.get(computer_name)
     if paths:
         root_folder = args.path if args.path else paths['input_folder']
-        output_folder = root_folder
     else:
         print(f'Нет настроенных путей для компьютера: {computer_name}')
         exit(1)
 
-    main(args.action, root_folder, output_zip_path, output_folder)
-    print(time.perf_counter() - start_script)
+    main(args.action, root_folder, output_zip_path)
+    print(f'время исполнения {round((time.perf_counter() - start_script), 2)} сек.')
