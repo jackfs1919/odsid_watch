@@ -14,12 +14,10 @@ os.system("taskkill /im Obsidian.exe /f")
 # Определение путей для разных компьютеров
 COMPUTER_PATHS = {
     'DAY': {
-        'input_folder': 'c:\\install\\Obsidian\\obsid',
-        
+        'input_folder': 'c:\\install\\Obsidian\\obsid'
     },
     'KOMPUTER': {
-        'input_folder': 'c:\\Program Files\\Obsidian\\obsid',
-        
+        'input_folder': 'c:\\Program Files\\Obsidian\\obsid'
     }
 }
 
