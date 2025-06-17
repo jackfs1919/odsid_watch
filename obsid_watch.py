@@ -15,11 +15,11 @@ os.system("taskkill /im Obsidian.exe /f")
 COMPUTER_PATHS = {
     'DAY': {
         'input_folder': 'c:\\install\\Obsidian\\obsid',
-        'output_folder': 'c:\\install\\Obsidian\\obsid'
+        
     },
     'KOMPUTER': {
         'input_folder': 'c:\\Program Files\\Obsidian\\obsid',
-        'output_folder': 'c:\\Program Files\\Obsidian\\obsid'
+        
     }
 }
 
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     paths = COMPUTER_PATHS.get(computer_name)
     if paths:
         root_folder = args.path if args.path else paths['input_folder']
-        output_folder = args.path if args.path else paths['output_folder']
+        output_folder = root_folder
     else:
         print(f'Нет настроенных путей для компьютера: {computer_name}')
         exit(1)
