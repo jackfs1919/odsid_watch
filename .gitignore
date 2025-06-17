@@ -65,6 +65,4 @@ pip-selfcheck.json
 out/
 atlassian-ide-plugin.xml
 .idea/
-*.txt
-*.cmd
 /ВГО/
