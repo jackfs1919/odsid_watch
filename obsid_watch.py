@@ -100,3 +100,4 @@ if __name__ == "__main__":
 
     main(args.action, root_folder, output_zip_path)
     print(f'время исполнения {round((time.perf_counter() - start_script), 2)} сек.')
+    time.sleep(5)
