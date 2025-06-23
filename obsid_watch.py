@@ -77,6 +77,8 @@ def main(action, root_folder, output_zip_path):
         if os.path.exists(zip_file_name):
             unzip_files(zip_file_name, output_folder)
             print(f'Распаковано в {output_folder}')
+            os.remove(zip_file_name)
+            print('Файл дельты удален')
         else:
             print(f'ZIP-файл не найден: {zip_file_name}')
 
