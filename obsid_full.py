@@ -39,16 +39,15 @@ def unzip_files(zip_file_name, output_folder):
 def clear_directory(path):
     if not os.path.isdir(path):
         raise ValueError(colored(f"Указанный путь не является директорией: {path}", "red"))
-
-    for entry in os.listdir(path):
-        full_path = os.path.join(path, entry)
-        try:
-            if os.path.isfile(full_path) or os.path.islink(full_path):
-                os.remove(full_path)
-            elif os.path.isdir(full_path):
-                shutil.rmtree(full_path)
-        except Exception as e:
-            logger.error(colored(f"Не удалось удалить {full_path}: {e}"), "red")
+    
+    try:
+        shutil.rmtree(path)
+    except Exception as e:
+            logger.error(colored(f"Не удалось удалить {path}: {e}"), "red")
+    try:
+        os.makedirs(path, exist_ok=True)
+    except Exception as e:
+            logger.error(colored(f"Не удалось создать {path}: {e}"), "red")
     
 
 def main(root_folder, output_zip_path):
