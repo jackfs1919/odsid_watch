@@ -20,9 +20,18 @@ COMPUTER_PATHS = {
     }
 }
 ZIP_PATH = "o:\\install\\obsid"
-zip_file = list(pathlib.Path(ZIP_PATH).glob('*.zip'))[0].name
+zip_file = ""
 computer_name = os.getenv('COMPUTERNAME')
 paths = COMPUTER_PATHS.get(computer_name)
+
+
+def ensure_zipfile_exists(zip_path):
+    global zip_file
+    try:
+        zip_file = list(pathlib.Path(zip_path).glob('*.zip'))[0].name
+    except Exception as e:
+        logger.error(colored(f'ZIP-файл не найден', 'red'))
+        exit()
 
 
 def ensure_directory_exists(path):
@@ -53,6 +62,7 @@ def clear_directory(path):
 def main(root_folder, output_zip_path):
     output_folder = root_folder
     ensure_directory_exists(output_zip_path)
+    ensure_zipfile_exists(ZIP_PATH)
 
     zip_file_name = os.path.join(output_zip_path, zip_file)
     if os.path.exists(zip_file_name):
@@ -66,6 +76,7 @@ def main(root_folder, output_zip_path):
         logger.error(colored(f'ZIP-файл не найден: {zip_file_name}', 'red'))
 
 
+
 if __name__ == "__main__":
     if paths:
         root_folder = paths['income_folder']
@@ -74,5 +85,5 @@ if __name__ == "__main__":
         exit(1)
     main(root_folder, ZIP_PATH)
     logger.info(f'время исполнения {colored(str(round((time.perf_counter() - start_script), 2)), "green")} сек.')
-    time.sleep(5)
+    time.sleep(50)
 
