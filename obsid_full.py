@@ -85,5 +85,5 @@ if __name__ == "__main__":
         exit(1)
     main(root_folder, ZIP_PATH)
     logger.info(f'время исполнения {colored(str(round((time.perf_counter() - start_script), 2)), "green")} сек.')
-    time.sleep(50)
+    time.sleep(5)
 
