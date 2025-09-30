@@ -5,6 +5,7 @@ import zipfile
 import time
 import logging
 from termcolor import colored
+import snoop
 
 start_script = time.perf_counter()
 os.system("taskkill /im Obsidian.exe /f")
@@ -59,6 +60,7 @@ def clear_directory(path):
             logger.error(colored(f"Не удалось создать {path}: {e}"), "red")
     
 
+@snoop
 def main(root_folder, output_zip_path):
     output_folder = root_folder
     ensure_directory_exists(output_zip_path)
