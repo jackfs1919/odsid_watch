@@ -1,6 +1,7 @@
 from webdav3.client import Client
 from dotenv import load_dotenv
 import os
+from pprint import pprint as print
 load_dotenv()
 
 data = {
@@ -12,3 +13,4 @@ client = Client(data)
 
 my_files = client.list()
 print(client.check('install/obsid/changed_files.zip'))
+print(my_files)
